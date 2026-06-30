@@ -31,7 +31,7 @@ typedef unsigned char _qs_type_BOOL;
 
 #define _qs_is_sorted_t(type, name) _qs_type_BOOL name(type *arr, _qs_type_WORD len) { \
     if(len <= 1) return _QS_TRUE; \
-    for(int i = 1; i < len; i++) { \
+    for(_qs_type_WORD i = 1; i < len; i++) { \
         if(arr[i-1] > arr[i]) return _QS_FALSE;} \
     return _QS_TRUE;}
 
