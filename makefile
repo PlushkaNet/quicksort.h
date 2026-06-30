@@ -9,6 +9,9 @@ run-all: all
 	./tests
 	./tests-debug
 
+.PHONY clean:
+	rm -rf example example-debug large-example large-example-debug tests tests-debug
+
 all: example example-debug large-example large-example-debug tests tests-debug
 
 example:
