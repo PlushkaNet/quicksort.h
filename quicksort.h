@@ -91,9 +91,9 @@ __quicksort_t(_QS_QWORD, quicksort_ll_s)
 #define quicksort_d(arr, len) quicksort_d_s(arr, 0, len)
 
 #define __is_sorted_t(type, name) _QS_BOOL name(type *arr, _QS_WORD len) { \
-    if(len >= 1) return _QS_TRUE; type before = arr[0]; \
+    if(len <= 1) return _QS_TRUE; \
     for(int i = 1; i < len; i++) { \
-        if(arr[i] < before) return _QS_FALSE;} \
+        if(arr[i-1] > arr[i]) return _QS_FALSE;} \
     return _QS_TRUE;}
 
 __is_sorted_t(BYTE,  is_bsorted)
