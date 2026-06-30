@@ -6,8 +6,10 @@ run-all: all
 	./example-debug
 	./large-example
 	./large-example-debug
+	./tests
+	./tests-debug
 
-all: example example-debug large-example large-example-debug
+all: example example-debug large-example large-example-debug tests tests-debug
 
 example:
 	${COMPILE} quicksort_example.c -o example
@@ -20,3 +22,9 @@ large-example:
 
 large-example-debug:
 	${DEBUG_COMPILE} quicksort_large_example.c -o large-example-debug
+
+tests:
+	${COMPILE} tests.c -o tests
+
+tests-debug:
+	${DEBUG_COMPILE} tests.c -o tests-debug
