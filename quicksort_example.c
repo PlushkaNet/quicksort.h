@@ -1,3 +1,4 @@
+//bin/gcc $0 -O2 -o /tmp/quicksort_example.c.compiled.temp && /tmp/quicksort_example.c.compiled.temp && rm -rf /tmp/quicksort_example.c.compiled.temp && exit 0;
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -53,6 +54,13 @@ int main() {
     // print sorted array in the terminal
     printf("Sorted array: ");
     print_bytearray(arr, ARR_SIZE);
+
+    _QS_BOOL is_sorted = is_bsorted(arr, ARR_SIZE);
+    if(is_sorted == _QS_TRUE) {
+        puts("Array sorted succesfully");
+    } else {
+        puts("Array was not sorted");
+    }
 
     // return memory to the system
     free(arr);
