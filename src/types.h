@@ -1,19 +1,24 @@
 #pragma once
 
 #ifndef BYTE
-#define BYTE char
+typedef char BYTE;
 #endif
 
 #ifndef WORD
-#define WORD int
+typedef int WORD;
 #endif
 
 #ifndef DWORD
-#define DWORD long
+typedef long DWORD;
 #endif
 
 #ifndef QWORD
-#define QWORD long long
+typedef long long QWORD;
 #endif
 
-#define _QS_WORD int
+typedef char _QS_BYTE;
+typedef int _QS_WORD;
+typedef long _QS_DWORD;
+typedef long long _QS_QWORD;
+typedef float _QS_FLOAT;
+typedef double _QS_DOUBLE;
