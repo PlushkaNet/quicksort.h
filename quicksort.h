@@ -8,11 +8,11 @@ typedef float _qs_type_FLOAT;
 typedef double _qs_type_DOUBLE;
 
 #ifdef __cplusplus
-typedef bool _QS_BOOL;
+typedef bool _qs_type_BOOL;
 #define _QS_TRUE true
 #define _QS_FALSE false
 #else
-typedef unsigned char _QS_BOOL;
+typedef unsigned char _qs_type_BOOL;
 #define _QS_TRUE 1
 #define _QS_FALSE 0
 #endif
@@ -29,7 +29,7 @@ typedef unsigned char _QS_BOOL;
             _qs_type_WORD it = i++; _qs_swap_t(type, arr[it], arr[j]) }} \
     name(arr, i, len);}
 
-#define _qs_is_sorted_t(type, name) _QS_BOOL name(type *arr, _qs_type_WORD len) { \
+#define _qs_is_sorted_t(type, name) _qs_type_BOOL name(type *arr, _qs_type_WORD len) { \
     if(len <= 1) return _QS_TRUE; \
     for(int i = 1; i < len; i++) { \
         if(arr[i-1] > arr[i]) return _QS_FALSE;} \
