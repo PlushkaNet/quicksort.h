@@ -1,3 +1,4 @@
+#pragma once
 #define BYTE  char
 #define WORD  int
 #define DWORD long
