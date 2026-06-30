@@ -18,13 +18,32 @@ __quicksort_t(WORD,  wquicksort_s  )
 __quicksort_t(DWORD, dwquicksort_s )
 __quicksort_t(QWORD, qwquicksort_s )
 
-__quicksort_t(float, quicksort_f_s )
-__quicksort_t(double, quicksort_d_s)
+__quicksort_t(_QS_FLOAT, quicksort_f_s )
+__quicksort_t(_QS_DOUBLE, quicksort_d_s)
 
+#if BYTE == _QS_BYTE
 #define quicksort_c_s  bquicksort_s
+#else
+__quicksort_t(_QS_BYTE, quicksort_c_s)
+#endif
+
+#if WORD == _QS_WORD
 #define quicksort_i_s  wquicksort_s
+#else
+__quicksort_t(_QS_WORD, quicksort_i_s)
+#endif
+
+#if DWORD == _QS_DWORD
 #define quicksort_l_s  dwquicksort_s
+#else
+__quicksort_t(_QS_DWORD, quicksort_l_s)
+#endif
+
+#if QWORD == _QS_QWORD
 #define quicksort_ll_s qwquicksort_s
+#else
+__quicksort_t(_QS_QWORD, quicksort_ll_s)
+#endif
 
 #define bquicksort(arr, len) bquicksort_s(arr, 0, len)
 #define wquicksort(arr, len) wquicksort_s(arr, 0, len)
