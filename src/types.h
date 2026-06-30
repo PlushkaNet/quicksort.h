@@ -22,3 +22,13 @@ typedef long _QS_DWORD;
 typedef long long _QS_QWORD;
 typedef float _QS_FLOAT;
 typedef double _QS_DOUBLE;
+
+#ifdef __cplusplus
+typedef bool _QS_BOOL;
+#define _QS_TRUE true
+#define _QS_FALSE false
+#else
+typedef int _QS_BOOL;
+#define _QS_TRUE 1
+#define _QS_FALSE 0
+#endif

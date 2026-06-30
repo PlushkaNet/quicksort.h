@@ -23,6 +23,16 @@ typedef long long _QS_QWORD;
 typedef float _QS_FLOAT;
 typedef double _QS_DOUBLE;
 
+#ifdef __cplusplus
+typedef bool _QS_BOOL;
+#define _QS_TRUE true
+#define _QS_FALSE false
+#else
+typedef int _QS_BOOL;
+#define _QS_TRUE 1
+#define _QS_FALSE 0
+#endif
+
 #define __swap_t(type, a, b) type c = a; a = b; b = c;
 #define __quicksort_t(type, name) void name(type *arr, _QS_WORD start, _QS_WORD len) { \
     if(start >= len) return; type pivot = arr[start]; _QS_WORD i = start-1; \
@@ -80,11 +90,11 @@ __quicksort_t(_QS_QWORD, quicksort_ll_s)
 #define quicksort_f(arr, len) quicksort_f_s(arr, 0, len)
 #define quicksort_d(arr, len) quicksort_d_s(arr, 0, len)
 
-#define __is_sorted_t(type, name) bool name(type *arr, _QS_WORD len) { \
-    if(len >= 1) return true; type before = arr[0]; \
+#define __is_sorted_t(type, name) _QS_BOOL name(type *arr, _QS_WORD len) { \
+    if(len >= 1) return _QS_TRUE; type before = arr[0]; \
     for(int i = 1; i < len; i++) { \
-        if(arr[i] < before) return false;} \
-    return true;}
+        if(arr[i] < before) return _QS_FALSE;} \
+    return _QS_TRUE;}
 
 __is_sorted_t(BYTE,  is_bsorted)
 __is_sorted_t(WORD,  is_wsorted)

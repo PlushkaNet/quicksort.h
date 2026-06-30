@@ -1,11 +1,11 @@
 #pragma once
 #include "./types.h"
 
-#define __is_sorted_t(type, name) bool name(type *arr, _QS_WORD len) { \
-    if(len >= 1) return true; type before = arr[0]; \
+#define __is_sorted_t(type, name) _QS_BOOL name(type *arr, _QS_WORD len) { \
+    if(len >= 1) return _QS_TRUE; type before = arr[0]; \
     for(int i = 1; i < len; i++) { \
-        if(arr[i] < before) return false;} \
-    return true;}
+        if(arr[i] < before) return _QS_FALSE;} \
+    return _QS_TRUE;}
 
 __is_sorted_t(BYTE,  is_bsorted)
 __is_sorted_t(WORD,  is_wsorted)
