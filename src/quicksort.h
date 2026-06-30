@@ -1,19 +1,16 @@
 #pragma once
-#define BYTE  char
-#define WORD  int
-#define DWORD long
-#define QWORD long long
+#include "./types.h"
 
 #define __swap_t(type, a, b) type c = a; a = b; b = c;
-#define __quicksort_t(type, name) void name(type *arr, WORD start, WORD len) { \
-    if(start >= len) return; type pivot = arr[start]; WORD i = start-1; \
-    for(WORD j = ++start; j < len; j++) { \
+#define __quicksort_t(type, name) void name(type *arr, _QS_WORD start, _QS_WORD len) { \
+    if(start >= len) return; type pivot = arr[start]; _QS_WORD i = start-1; \
+    for(_QS_WORD j = ++start; j < len; j++) { \
         if(arr[j] < pivot) { \
-            WORD it = ++i; __swap_t(type, arr[it], arr[j]) }} \
+            _QS_WORD it = ++i; __swap_t(type, arr[it], arr[j]) }} \
     name(arr, start, ++i); \
-    for(WORD j = i; j < len; j++) { \
+    for(_QS_WORD j = i; j < len; j++) { \
         if(arr[j] == pivot) { \
-            WORD it = i++; __swap_t(type, arr[it], arr[j]) }} \
+            _QS_WORD it = i++; __swap_t(type, arr[it], arr[j]) }} \
     name(arr, i, len);}
 
 __quicksort_t(BYTE,  bquicksort_s  )
