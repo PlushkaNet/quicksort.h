@@ -1,27 +1,11 @@
 #pragma once
 
-#ifndef BYTE
-typedef char BYTE;
-#endif
-
-#ifndef WORD
-typedef int WORD;
-#endif
-
-#ifndef DWORD
-typedef long DWORD;
-#endif
-
-#ifndef QWORD
-typedef long long QWORD;
-#endif
-
-typedef char _QS_BYTE;
-typedef int _QS_WORD;
-typedef long _QS_DWORD;
-typedef long long _QS_QWORD;
-typedef float _QS_FLOAT;
-typedef double _QS_DOUBLE;
+typedef char _qs_type_BYTE;
+typedef int _qs_type_WORD;
+typedef long _qs_type_DWORD;
+typedef long long _qs_type_QWORD;
+typedef float _qs_type_FLOAT;
+typedef double _qs_type_DOUBLE;
 
 #ifdef __cplusplus
 typedef bool _QS_BOOL;
@@ -33,48 +17,113 @@ typedef unsigned char _QS_BOOL;
 #define _QS_FALSE 0
 #endif
 
-#define __swap_t(type, a, b) type c = a; a = b; b = c;
-#define __quicksort_t(type, name) void name(type *arr, _QS_WORD start, _QS_WORD len) { \
-    if(start >= len) return; type pivot = arr[start]; _QS_WORD i = start-1; \
-    for(_QS_WORD j = start+1; j < len; j++) { \
+#define _qs_swap_t(type, a, b) type c = a; a = b; b = c;
+#define _qs_quicksort_t(type, name) void name(type *arr, _qs_type_WORD start, _qs_type_WORD len) { \
+    if(start >= len) return; type pivot = arr[start]; _qs_type_WORD i = start-1; \
+    for(_qs_type_WORD j = start+1; j < len; j++) { \
         if(arr[j] < pivot) { \
-            _QS_WORD it = ++i; __swap_t(type, arr[it], arr[j]) }} \
+            _qs_type_WORD it = ++i; _qs_swap_t(type, arr[it], arr[j]) }} \
     name(arr, start, ++i); \
-    for(_QS_WORD j = i; j < len; j++) { \
+    for(_qs_type_WORD j = i; j < len; j++) { \
         if(arr[j] == pivot) { \
-            _QS_WORD it = i++; __swap_t(type, arr[it], arr[j]) }} \
+            _qs_type_WORD it = i++; _qs_swap_t(type, arr[it], arr[j]) }} \
     name(arr, i, len);}
 
-__quicksort_t(BYTE,  bquicksort_s  )
-__quicksort_t(WORD,  wquicksort_s  )
-__quicksort_t(DWORD, dwquicksort_s )
-__quicksort_t(QWORD, qwquicksort_s )
+#define _qs_is_sorted_t(type, name) _QS_BOOL name(type *arr, _qs_type_WORD len) { \
+    if(len <= 1) return _QS_TRUE; \
+    for(int i = 1; i < len; i++) { \
+        if(arr[i-1] > arr[i]) return _QS_FALSE;} \
+    return _QS_TRUE;}
 
-__quicksort_t(_QS_FLOAT, quicksort_f_s )
-__quicksort_t(_QS_DOUBLE, quicksort_d_s)
+#ifdef BYTE
+_qs_quicksort_t(BYTE, bquicksort_s)
+_qs_is_sorted_t(BYTE, is_bsorted)
 
-#if BYTE == _QS_BYTE
-#define quicksort_c_s  bquicksort_s
-#else
-__quicksort_t(_QS_BYTE, quicksort_c_s)
+#if BYTE == _qs_type_BYTE
+#define _qs_alias_BYTE
 #endif
 
-#if WORD == _QS_WORD
-#define quicksort_i_s  wquicksort_s
 #else
-__quicksort_t(_QS_WORD, quicksort_i_s)
+#define _qs_alias_BYTE
+_qs_quicksort_t(_qs_type_BYTE, bquicksort_s)
+_qs_is_sorted_t(_qs_type_BYTE, is_bsorted)
 #endif
 
-#if DWORD == _QS_DWORD
-#define quicksort_l_s  dwquicksort_s
-#else
-__quicksort_t(_QS_DWORD, quicksort_l_s)
+#ifdef WORD
+_qs_quicksort_t(WORD, wquicksort_s)
+_qs_is_sorted_t(WORD, is_wsorted)
+
+#if WORD == _qs_type_WORD
+#define _qs_alias_WORD
 #endif
 
-#if QWORD == _QS_QWORD
+#else
+#define _qs_alias_WORD
+_qs_quicksort_t(_qs_type_WORD, wquicksort_s)
+_qs_is_sorted_t(_qs_type_WORD, is_wsorted)
+#endif
+
+#ifdef DWORD
+_qs_quicksort_t(DWORD, dwquicksort_s)
+_qs_is_sorted_t(DWORD, is_dwsorted)
+
+#if DWORD == _qs_type_DWORD
+#define _qs_alias_DWORD
+#endif
+
+#else
+#define _qs_alias_DWORD
+_qs_quicksort_t(_qs_type_DWORD, dwquicksort_s)
+_qs_is_sorted_t(_qs_type_DWORD, is_dwsorted)
+#endif
+
+#ifdef QWORD
+_qs_quicksort_t(QWORD, qwquicksort_s)
+_qs_is_sorted_t(QWORD, is_qwsorted)
+
+#if QWORD == _qs_type_QWORD
+#define _qs_alias_QWORD
+#endif
+
+#else
+#define _qs_alias_QWORD
+_qs_quicksort_t(_qs_type_QWORD, qwquicksort_s)
+_qs_is_sorted_t(_qs_type_QWORD, is_qwsorted)
+#endif
+
+_qs_quicksort_t(_qs_type_FLOAT, quicksort_f_s)
+_qs_quicksort_t(_qs_type_DOUBLE, quicksort_d_s)
+
+#ifdef _qs_alias_BYTE
+#define quicksort_c_s bquicksort_s
+#define is_sorted_c is_bsorted
+#else
+_qs_quicksort_t(_qs_type_BYTE, quicksort_c_s)
+_qs_is_sorted_t(_qs_type_BYTE, is_sorted_c)
+#endif
+
+#ifdef _qs_alias_WORD
+#define quicksort_i_s wquicksort_s
+#define is_sorted_i is_wsorted
+#else
+_qs_quicksort_t(_qs_type_WORD, quicksort_i_s)
+_qs_is_sorted_t(_qs_type_WORD, is_sorted_i)
+#endif
+
+#ifdef _qs_alias_DWORD
+#define quicksort_l_s dwquicksort_s
+#define is_sorted_l is_dwsorted
+#else
+_qs_quicksort_t(_qs_type_DWORD, quicksort_l_s)
+_qs_is_sorted_t(_qs_type_DWORD, is_sorted_l)
+#endif
+
+#ifdef _qs_alias_QWORD
 #define quicksort_ll_s qwquicksort_s
+#define is_sorted_ll is_qwsorted
 #else
-__quicksort_t(_QS_QWORD, quicksort_ll_s)
+_qs_quicksort_t(_qs_type_QWORD, quicksort_ll_s)
+_qs_is_sorted_t(_qs_type_QWORD, is_sorted_ll)
 #endif
 
 #define bquicksort(arr, len) bquicksort_s(arr, 0, len)
@@ -90,40 +139,5 @@ __quicksort_t(_QS_QWORD, quicksort_ll_s)
 #define quicksort_f(arr, len) quicksort_f_s(arr, 0, len)
 #define quicksort_d(arr, len) quicksort_d_s(arr, 0, len)
 
-#define __is_sorted_t(type, name) _QS_BOOL name(type *arr, _QS_WORD len) { \
-    if(len <= 1) return _QS_TRUE; \
-    for(int i = 1; i < len; i++) { \
-        if(arr[i-1] > arr[i]) return _QS_FALSE;} \
-    return _QS_TRUE;}
-
-__is_sorted_t(BYTE,  is_bsorted)
-__is_sorted_t(WORD,  is_wsorted)
-__is_sorted_t(DWORD, is_dwsorted)
-__is_sorted_t(QWORD, is_qwsorted)
-
-#if BYTE == _QS_BYTE
-#define is_sorted_c is_bsorted
-#else
-__is_sorted_t(_QS_BYTE, is_sorted_c)
-#endif
-
-#if WORD == _QS_WORD
-#define is_sorted_i is_wsorted
-#else
-__is_sorted_t(_QS_WORD, is_sorted_i)
-#endif
-
-#if DWORD == _QS_DWORD
-#define is_sorted_l is_dwsorted
-#else
-__is_sorted_t(_QS_DWORD, is_sorted_l)
-#endif
-
-#if QWORD == _QS_QWORD
-#define is_sorted_ll is_qwsorted
-#else
-__is_sorted_t(_QS_QWORD, is_sorted_ll)
-#endif
-
-__is_sorted_t(_QS_FLOAT, is_sorted_f)
-__is_sorted_t(_QS_DOUBLE, is_sorted_d)
+_qs_is_sorted_t(_qs_type_FLOAT, is_sorted_f)
+_qs_is_sorted_t(_qs_type_DOUBLE, is_sorted_d)
