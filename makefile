@@ -1,5 +1,5 @@
-DEBUG_COMPILE = clang -g -O2 -fsanitize=address -fsanitize=undefined
-COMPILE = clang -O2
+DEBUG_COMPILE = gcc -g -O2 -fsanitize=address -fsanitize=undefined
+COMPILE = gcc -O2
 
 run-all: all
 	./example
