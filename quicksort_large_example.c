@@ -27,8 +27,8 @@ int main() {
 
     _qs_type_BOOL is_sorted = is_sorted_i(arr, ARR_SIZE);
     if(is_sorted == _QS_TRUE) {
-        puts("Sorted successfully");
+        puts("Array sorted succesfully");
     } else {
-        puts("Unsorted");
+        puts("Array was not sorted");
     }
 }
