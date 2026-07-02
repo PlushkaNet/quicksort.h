@@ -40,5 +40,5 @@
 Result of is_sorted-like method is always a bool-like variable. In C++ it is standart bool. In C - it is unsigned char (int8bit). For convenience you can use `_qs_type_BOOL` type, which represents internal bool type.
 
 #### _qs_type_BOOL states:
-- `_QS_TRUE` is true
-- `_QS_FALSE` is false
+- `qs_TRUE` is true
+- `qs_FALSE` is false

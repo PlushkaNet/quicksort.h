@@ -42,14 +42,14 @@ _qs_type_BOOL ll_sort_small_test() {
 }
 
 int main() {
-    if(is_sorted_test() == _QS_FALSE) return 1;
+    if(is_sorted_test() == qs_FALSE) return 1;
     puts("is_sorted test passed");
-    if(int_sort_small_test() == _QS_FALSE) return 1;
+    if(int_sort_small_test() == qs_FALSE) return 1;
     puts("int_sort_small_test test passed");
-    if(char_sort_small_test() == _QS_FALSE) return 1;
+    if(char_sort_small_test() == qs_FALSE) return 1;
     puts("char_sort_small_test test passed");
-    if(ll_sort_small_test() == _QS_FALSE) return 1;
+    if(ll_sort_small_test() == qs_FALSE) return 1;
     puts("ll_sort_small_test test passed");
-    if(float_sort_small_test() == _QS_FALSE) return 1;
+    if(float_sort_small_test() == qs_FALSE) return 1;
     puts("float_sort_small_test test passed");
 }

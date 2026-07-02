@@ -26,7 +26,7 @@ int main() {
     print_intarray(arr, ARR_SIZE);
 
     _qs_type_BOOL is_sorted = is_sorted_i(arr, ARR_SIZE);
-    if(is_sorted == _QS_TRUE) {
+    if(is_sorted == qs_TRUE) {
         puts("Array sorted succesfully");
     } else {
         puts("Array was not sorted");

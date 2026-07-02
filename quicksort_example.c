@@ -56,7 +56,7 @@ int main() {
     print_bytearray(arr, ARR_SIZE);
 
     _qs_type_BOOL is_sorted = is_bsorted(arr, ARR_SIZE);
-    if(is_sorted == _QS_TRUE) {
+    if(is_sorted == qs_TRUE) {
         puts("Array sorted succesfully");
     } else {
         puts("Array was not sorted");
