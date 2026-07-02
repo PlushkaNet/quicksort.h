@@ -15,7 +15,7 @@ _qs_type_BOOL int_sort_small_test() {
 }
 
 _qs_type_BOOL char_sort_small_test() {
-    char arr[8] = {128, -91, 57, 12, 98, 0, -99, -81};
+    char arr[8] = {127, -91, 57, 12, 98, 0, -99, -81};
     quicksort_c(arr, 8);
     return is_sorted_c(arr, 8);
 }
