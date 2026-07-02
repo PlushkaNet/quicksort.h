@@ -1,6 +1,9 @@
 # quicksort.h
 ## One-header library with simple sorting methods
 > **You can navigate into quicksort_example.c to see example of usage**
+<br>
+
+> C++ only single header library *quicksort.hpp* can be found **[here](https://github.com/PlushkaNet/quicksort.hpp)**
 
 ## Avaliable methods:
 - `bquicksort` (for sorting bytes)
