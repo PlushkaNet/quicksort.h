@@ -4,14 +4,14 @@ DEBUG_COMPILE_CPP = g++ -g -O0 -Wpedantic -fsanitize=address -fsanitize=undefine
 COMPILE_CPP = g++ -O2
 
 run-all: all
-	./example
 	./example-debug
-	./large-example
+	./example
 	./large-example-debug
-	./tests
+	./large-example
 	./tests-debug
-	./test-cpp
+	./tests
 	./test-cpp-debug
+	./test-cpp
 
 .PHONY clean:
 	rm -rf example example-debug large-example large-example-debug tests tests-debug test-cpp test-cpp-debug
