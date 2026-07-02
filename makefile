@@ -1,4 +1,4 @@
-DEBUG_COMPILE = gcc -g -O2 -fsanitize=address -fsanitize=undefined
+DEBUG_COMPILE = gcc -g -O1 -fsanitize=address -fsanitize=undefined
 COMPILE = gcc -O2
 
 run-all: all
