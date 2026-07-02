@@ -6,7 +6,7 @@
 > C++ only single header library *quicksort.hpp* can be found **[here](https://github.com/PlushkaNet/quicksort.hpp)**
 
 ## Performance
-On randomized array of integers with length of 1 billion method quicksort_i resulted in **25884ms (~26s)**
+On randomized array of integers with length of **1 billion** method `quicksort_i` resulted in **25884ms (~26s)**
 
 ## Avaliable methods:
 - `bquicksort` (for sorting bytes)
