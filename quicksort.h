@@ -9,12 +9,12 @@ typedef double _qs_type_DOUBLE;
 
 #ifdef __cplusplus
 typedef bool _qs_type_BOOL;
-#define _QS_TRUE true
-#define _QS_FALSE false
+#define _qs_TRUE true
+#define _qs_FALSE false
 #else
 typedef unsigned char _qs_type_BOOL;
-#define _QS_TRUE 1
-#define _QS_FALSE 0
+#define _qs_TRUE 1
+#define _qs_FALSE 0
 #endif
 
 #define _qs_swap_t(type, a, b) type c = a; a = b; b = c;
@@ -30,10 +30,10 @@ typedef unsigned char _qs_type_BOOL;
     name(arr, i, len);}
 
 #define _qs_is_sorted_t(type, name) _qs_type_BOOL name(type *arr, _qs_type_WORD len) { \
-    if(len <= 1) return _QS_TRUE; \
+    if(len <= 1) return _qs_TRUE; \
     for(_qs_type_WORD i = 1; i < len; i++) { \
-        if(arr[i-1] > arr[i]) return _QS_FALSE;} \
-    return _QS_TRUE;}
+        if(arr[i-1] > arr[i]) return _qs_FALSE;} \
+    return _qs_TRUE;}
 
 #ifdef BYTE
 _qs_quicksort_t(BYTE, bquicksort_s)
@@ -141,3 +141,6 @@ _qs_is_sorted_t(_qs_type_QWORD, is_sorted_ll)
 
 _qs_is_sorted_t(_qs_type_FLOAT, is_sorted_f)
 _qs_is_sorted_t(_qs_type_DOUBLE, is_sorted_d)
+
+#define qs_TRUE _qs_TRUE
+#define qs_FALSE _qs_FALSE
