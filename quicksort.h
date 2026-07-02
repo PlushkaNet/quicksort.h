@@ -2,6 +2,7 @@
 /*
  * Copyright (C) 2026 PlushkaNet (github.com/PlushkaNet)
  */
+
 #pragma once
 
 /*
