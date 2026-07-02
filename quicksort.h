@@ -19,8 +19,8 @@ typedef unsigned char _qs_type_BOOL;
 
 #define _qs_swap_t(type, a, b) type c = a; a = b; b = c;
 #define _qs_quicksort_t(type, name) void name(type *arr, _qs_type_WORD start, _qs_type_WORD len) { \
-    if((len-start) <= 1) return; type pivot = arr[start]; _qs_type_WORD i = start-1; \
-    for(_qs_type_WORD j = start+1; j < len; j++) { \
+    if((len-start) <= 1) return; type pivot = arr[(len+start)/2]; _qs_type_WORD i = start-1; \
+    for(_qs_type_WORD j = start; j < len; j++) { \
         if(arr[j] < pivot) { \
             _qs_type_WORD it = ++i; _qs_swap_t(type, arr[it], arr[j]) }} \
     name(arr, start, ++i); \
