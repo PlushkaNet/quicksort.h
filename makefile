@@ -1,6 +1,6 @@
-DEBUG_COMPILE = gcc -g -O1 -fsanitize=address -fsanitize=undefined
+DEBUG_COMPILE = gcc -g -O0 -Wpedantic -fsanitize=address -fsanitize=undefined
 COMPILE = gcc -O2
-DEBUG_COMPILE_CPP = g++ -g -O1 -fsanitize=address -fsanitize=undefined
+DEBUG_COMPILE_CPP = g++ -g -O0 -Wpedantic -fsanitize=address -fsanitize=undefined
 COMPILE_CPP = g++ -O2
 
 run-all: all
