@@ -1,4 +1,35 @@
+// SPDX-License-Identifier: MIT
+/*
+ * Copyright (C) 2026 PlushkaNet (github.com/PlushkaNet)
+ */
 #pragma once
+
+/*
+ * This header provides macro-generated, type-safe quicksort functions
+ * for integer and floating-point types.
+ * The algorithm uses three-way partitioning, this grants high performance
+ * even on arrays with many duplicates.
+ *
+ * General features:
+ * - Strongly-typed functions.
+ * - Automatic adaptation to custom type macros: if `BYTE`, `WORD`, `DWORD`, or
+ *   `QWORD` are defined before inclusion, the corresponding sort functions
+ *   are generated for those types; otherwise standard types (char, int, long,
+ *   long long) are used.
+ * - Convenience is_sorted_* functions that return `qs_TRUE` or `qs_FALSE`.
+ * 
+ * Usage example:
+ * @code
+ *   #include "quicksort.h"
+ *   int main() {
+ *       int arr[5] = {91, 23, 999, -912, 0};
+ *       quicksort_i(arr, 5);                  // sort the array
+ *       if(is_sorted_i(arr, 5) == qs_TRUE) {
+ *           // array is sorted
+ *       }
+ *   }
+ * @endcode
+ */
 
 typedef char _qs_type_BYTE;
 typedef int _qs_type_WORD;
