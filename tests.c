@@ -26,6 +26,27 @@ _qs_type_BOOL float_sort_small_test() {
     return is_sorted_f(arr, 8);
 }
 
+_qs_type_BOOL double_sort_small_test() {
+    float arr[8] = {127.81912731236781, 127.81912731236782, 57.128, 57.129, 98.0, 0.1, -99.99, -81.18};
+    quicksort_f(arr, 8);
+    return is_sorted_f(arr, 8);
+}
+
+_qs_type_BOOL l_sort_small_test() {
+    long arr[8] = {
+        29749124917924,
+        -198724874214,
+        1278149152927,
+        -1692164971264,
+        524729212124,
+        0,
+        124791274981,
+        8372574998
+    };
+    quicksort_l(arr, 8);
+    return is_sorted_l(arr, 8);
+}
+
 _qs_type_BOOL ll_sort_small_test() {
     long long arr[8] = {
         2974912491431847924,
@@ -48,10 +69,14 @@ int main() {
     puts("int_sort_small_test test passed");
     if(char_sort_small_test() == qs_FALSE) return 1;
     puts("char_sort_small_test test passed");
+    if(l_sort_small_test() == qs_FALSE) return 1;
+    puts("l_sort_small_test test passed");
     if(ll_sort_small_test() == qs_FALSE) return 1;
     puts("ll_sort_small_test test passed");
     if(float_sort_small_test() == qs_FALSE) return 1;
     puts("float_sort_small_test test passed");
+    if(double_sort_small_test() == qs_FALSE) return 1;
+    puts("double_sort_small_test test passed");
 
     puts("all tests passed");
 }
