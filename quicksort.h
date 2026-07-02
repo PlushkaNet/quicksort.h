@@ -49,23 +49,21 @@ typedef unsigned char _qs_type_BOOL;
 #define _qs_FALSE 0
 #endif
 
-#define _qs_swap_t(type, a, b) type c = a; a = b; b = c;
+#define _qs_quicksort_swap_t(type, a, b) type c = a; a = b; b = c;
 #define _qs_quicksort_t(type, name) void name(type *arr, _qs_type_WORD start, _qs_type_WORD len) { \
     if((len-start) <= 1) return; type pivot = arr[(len+start)/2]; _qs_type_WORD i = start-1; \
     for(_qs_type_WORD j = start; j < len; j++) { \
-        if(arr[j] < pivot) { \
-            _qs_type_WORD it = ++i; _qs_swap_t(type, arr[it], arr[j]) }} \
+        if(arr[j] < pivot) { i++; _qs_quicksort_swap_t(type, arr[i], arr[j]) }} \
     name(arr, start, ++i); \
     for(_qs_type_WORD j = i; j < len; j++) { \
-        if(arr[j] == pivot) { \
-            _qs_type_WORD it = i++; _qs_swap_t(type, arr[it], arr[j]) }} \
-    name(arr, i, len);}
+        if(arr[j] == pivot) { _qs_quicksort_swap_t(type, arr[i], arr[j]); i++; }} \
+    name(arr, i, len); }
 
 #define _qs_is_sorted_t(type, name) _qs_type_BOOL name(type *arr, _qs_type_WORD len) { \
     if(len <= 1) return _qs_TRUE; \
     for(_qs_type_WORD i = 1; i < len; i++) { \
-        if(arr[i-1] > arr[i]) return _qs_FALSE;} \
-    return _qs_TRUE;}
+        if(arr[i-1] > arr[i]) return _qs_FALSE; } \
+    return _qs_TRUE; }
 
 #ifdef BYTE
 _qs_quicksort_t(BYTE, bquicksort_s)
