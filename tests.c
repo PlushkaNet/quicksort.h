@@ -52,4 +52,6 @@ int main() {
     puts("ll_sort_small_test test passed");
     if(float_sort_small_test() == qs_FALSE) return 1;
     puts("float_sort_small_test test passed");
+
+    puts("all tests passed");
 }
