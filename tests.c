@@ -62,21 +62,37 @@ _qs_type_BOOL ll_sort_small_test() {
     return is_sorted_ll(arr, 8);
 }
 
-int main() {
-    if(is_sorted_test() == qs_FALSE) return 1;
-    puts("is_sorted test passed");
-    if(int_sort_small_test() == qs_FALSE) return 1;
-    puts("int_sort_small_test test passed");
-    if(char_sort_small_test() == qs_FALSE) return 1;
-    puts("char_sort_small_test test passed");
-    if(l_sort_small_test() == qs_FALSE) return 1;
-    puts("l_sort_small_test test passed");
-    if(ll_sort_small_test() == qs_FALSE) return 1;
-    puts("ll_sort_small_test test passed");
-    if(float_sort_small_test() == qs_FALSE) return 1;
-    puts("float_sort_small_test test passed");
-    if(double_sort_small_test() == qs_FALSE) return 1;
-    puts("double_sort_small_test test passed");
+_qs_type_BOOL small_array_test() {
+    char arr[1] = {5};
+    quicksort_c(arr, 1);
+    return is_sorted_c(arr, 1);
+}
 
+_qs_type_BOOL negative_values_test() {
+    char arr[4] = {-20, -9, -78, -3};
+    quicksort_c(arr, 4);
+    return is_sorted_c(arr, 4);
+}
+
+int main() {
+    if (is_sorted_test() == qs_FALSE) return 1;
+    puts("is_sorted test passed");
+    if (int_sort_small_test() == qs_FALSE) return 1;
+    puts("int_sort_small_test test passed");
+    if (char_sort_small_test() == qs_FALSE) return 1;
+    puts("char_sort_small_test test passed");
+    if (l_sort_small_test() == qs_FALSE) return 1;
+    puts("l_sort_small_test test passed");
+    if (ll_sort_small_test() == qs_FALSE) return 1;
+    puts("ll_sort_small_test test passed");
+    if (float_sort_small_test() == qs_FALSE) return 1;
+    puts("float_sort_small_test test passed");
+    if (double_sort_small_test() == qs_FALSE) return 1;
+    puts("double_sort_small_test test passed");
+    if (small_array_test() == qs_FALSE) return 1;
+    puts("small_array_test test passed");
+    if (negative_values_test() == qs_FALSE) return 1;
+    puts("negative_values_test test passed");
+    
     puts("all tests passed");
 }
