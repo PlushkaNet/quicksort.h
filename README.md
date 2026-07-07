@@ -1,5 +1,5 @@
 # quicksort.h
-## Signle-header library with simple but overwhelmingly fast sorting methods
+## Single-header library with simple but fast sorting methods
 > **You can navigate into *quicksort_example.c* to see example of usage**
 <br>
 
